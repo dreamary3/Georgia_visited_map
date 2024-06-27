@@ -1,0 +1,194 @@
+/* Base styles */
+body, html {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: Arial, sans-serif;
+	text-align: center;
+	background-color: #ebeada;
+}
+
+#georgia-map {
+	width: 80%;
+	max-width: 1200px; /* Limit the width for larger screens */
+	height: auto;
+}
+
+.region {
+	stroke-width: 1;
+	cursor: pointer;
+	transition: fill 0.3s;
+}
+
+.visited-counter {
+	margin-top: 10px; /* Reduced margin to move closer to the SVG map */
+	font-size: 1.3em;
+	position: relative; /* Added for potential fine-tuning */
+	top: -30px; /* Adjusted this value to move the counter up */
+}
+
+path {
+	fill: #be9810a0; /* Default fill color */
+	stroke: #3a3402; /* Stroke color */
+	stroke-width: 1px; /* Stroke width */
+	transition: fill 0.3s; /* Smooth transition for color changes */
+}
+
+path:hover {
+	fill: #be9810; /* Darker color on hover */
+}
+
+path[data-clicked="true"]:hover {
+	fill: #0ead1b !important; /* Slightly darker green on hover */
+}
+
+text {
+	fill: #3a3402;
+}
+
+path:focus {
+	outline: 2px dashed #3a3402; /* Outline for focus */
+	outline-offset: 2px;
+}
+
+.map-container {
+	width: 100%;
+	height: calc(100vh - 80px); /* Adjusted height to accommodate footer */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px; /* Add padding for better spacing */
+}
+
+svg {
+	width: 100%;
+	height: auto;
+}
+
+button {
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.notification {
+	position: fixed;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #4CAF50;
+	color: white;
+	padding: 15px 25px;
+	border-radius: 5px;
+	display: none;
+	z-index: 999;
+}
+
+/* Add animation */
+@keyframes slideIn {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideOut {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+.notification.show {
+	animation: slideIn 0.5s forwards;
+}
+
+.notification.hide {
+	animation: slideOut 0.5s forwards;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+	.map-container {
+		max-width: 1140px;
+	}
+
+	h1 {
+		font-size: 24px;
+		margin: 20px auto;
+	}
+
+	#georgia-map {
+		width: 100%;
+	}
+
+	footer {
+		padding: 15px 0;
+		font-size: 1em;
+	}
+}
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 18px;
+		margin: 5px;
+	}
+
+	.map-container {
+		padding: 5px;
+	}
+
+	#georgia-map {
+		width: 100%;
+	}
+
+	footer {
+		padding: 10px 0;
+		font-size: 0.8em;
+	}
+}
+
+footer {
+	width: 100%;
+	padding: 10px 0;
+	background-color: #3a3402;
+	color: white;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+}
+.notification {
+	position: fixed;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #4CAF50;
+	color: white;
+	padding: 15px 25px;
+	border-radius: 5px;
+	display: none;
+	z-index: 999;
+}
+
+#congrats-animation {
+	position: fixed;
+	top: 120px; /* Adjust this value as needed to avoid overlap */
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #4CAF50;
+	color: white;
+	padding: 15px 25px;
+	border-radius: 5px;
+	display: none;
+	z-index: 999;
+}
